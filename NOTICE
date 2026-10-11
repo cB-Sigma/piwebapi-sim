@@ -1,0 +1,55 @@
+piwebapi-sim (a simulated AVEVA PI Web API and a test Kerberos KDC, in Go)
+Copyright 2026 Abhinav Gautam
+
+This module is licensed under the Apache License, Version 2.0 (LICENSE).
+
+The code was written for SigmaM2M, a oneM2M platform, from the public
+PI Web API reference and the Kerberos RFCs (PROVENANCE.md). It contains
+no code from other projects. The source files that come from SigmaM2M
+(sim/sim.go, sim/kdcsim/kdcsim.go) carry no per-file copyright header,
+the convention of the code they come from; the copyright line above
+covers them. Files added for this module carry "Copyright 2026 Abhinav
+Gautam" and "SPDX-License-Identifier: Apache-2.0".
+
+Trademarks
+----------
+
+AVEVA, OSIsoft, PI, PI System, PI Web API, PI Data Archive and PI Asset
+Framework are trademarks of AVEVA Group Limited or its affiliates. This
+module is not made, endorsed or supported by AVEVA, and is not
+affiliated with it; the names are used only to say which product it
+simulates.
+
+Facts from other projects
+-------------------------
+
+Action paths, parameter names and field names were checked against
+OSIsoft's PI Web API client for Python, generated from the PI Web API's
+2018 description (Copyright 2018 OSIsoft, LLC, Apache License 2.0),
+through the piwebapi module. Only interface facts were taken.
+
+Dependencies
+------------
+
+- github.com/cB-Sigma/piwebapi (Copyright 2026 Abhinav Gautam,
+  Apache-2.0), used by the tests and the command.
+- gokrb5 v8.4.4 (https://github.com/jcmturner/gokrb5), by Jonathan
+  Turner and contributors (its LICENSE file names no copyright holder;
+  it ships no NOTICE file), Apache License 2.0: the SPNEGO acceptor and
+  keytabs (sim), the message encoders and RFC 3961 profiles (sim/kdcsim).
+  Used as a module dependency, not copied.
+- Through gokrb5: aescts, dnsutils, goidentity and rpc (github.com/
+  jcmturner, Apache License 2.0), gofork (Copyright The Go Authors,
+  BSD-3-Clause, also used directly by sim/kdcsim), go-uuid
+  (https://github.com/hashicorp/go-uuid, Copyright HashiCorp, Inc.,
+  Mozilla Public License 2.0; used unmodified, its source is available
+  from that address), golang.org/x/crypto and golang.org/x/net
+  (Copyright The Go Authors, BSD-3-Clause).
+- The Go standard library (BSD-3-Clause, Copyright The Go Authors).
+
+Test data
+---------
+
+Every server name, point name, value, realm, user name, password, token
+and key in this module is a made-up demo value. The KDC makes its keys
+in memory when it starts; none is stored in the repository.
